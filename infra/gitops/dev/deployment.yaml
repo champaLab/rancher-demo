@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: node-dummy
-  replicas: 1
+  replicas: 10
   strategy:
     rollingUpdate:
       maxSurge: 25%
