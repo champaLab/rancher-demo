@@ -24,13 +24,13 @@ jobs:
           password: ${{ secrets.WORKFLOW_TOKEN }}
           logout: true
       - name: Pull the latest Docker image
-        run: docker pull ghcr.io/champalab/demo-api:latest || true
+        run: docker pull ghcr.io/champalab/node-dummy:latest || true
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ghcr.io/champalab/demo-api:${{ env.GITHUB_SHA }} --tag ghcr.io/champalab/demo-api:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/champalab/node-dummy:${{ env.GITHUB_SHA }} --tag ghcr.io/champalab/node-dummy:latest
       - name: Push the Docker image
-        run: docker push ghcr.io/champalab/demo-api:${{ env.GITHUB_SHA }}
+        run: docker push ghcr.io/champalab/node-dummy:${{ env.GITHUB_SHA }}
       - name: Push the Docker image latest
-        run: docker push ghcr.io/champalab/demo-api:latest
+        run: docker push ghcr.io/champalab/node-dummy:latest
 
   # ==============
   # CD DEV task
@@ -48,9 +48,10 @@ jobs:
         run: |
           git --version
           git config user.name "robot"
+          git config user.email "root@laogw.link"
       - name: change image tag to deploy dev
         run: |
-          sed "s|image: ghcr\.io/champalab/demo-api:[^ ]*|image: ghcr.io/champalab/demo-api:${GITHUB_SHA}|" infra/gitops/dev/deployment.yaml > tmp_deployment.yaml
+          sed "s|image: ghcr\.io/champalab/node-dummy:[^ ]*|image: ghcr.io/champalab/node-dummy:${GITHUB_SHA}|" infra/gitops/dev/deployment.yaml > tmp_deployment.yaml
           mv tmp_deployment.yaml infra/gitops/dev/deployment.yaml
           git add infra/gitops/dev/deployment.yaml
           git commit -m "[skip actions] 🤖 change dev docker image version to ${GITHUB_SHA}"
