@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-dummy-service
+  name: demo-api
   namespace: dev
 spec:
   selector:
-    app: node-dummy
+    app: demo-api
   type: NodePort
   sessionAffinity: None
   # sessionAffinityConfig:
@@ -14,10 +14,10 @@ spec:
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ports:
-    - name: node-dummy-service-port
+    - name: demo-api-port
       protocol: TCP
-      port: 4500
-      targetPort: 4500
+      port: 1122
+      targetPort: 1122
       # If you set the `spec.type` field to `NodePort` and you want a specific port number,
       # you can specify a value in the `spec.ports[*].nodePort` field.
       nodePort: 30100

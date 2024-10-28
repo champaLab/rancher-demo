@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-dummy
+  name: demo-api
   namespace: dev
   labels:
-    app: node-dummy
+    app: demo-api
 spec:
   selector:
     matchLabels:
-      app: node-dummy
+      app: demo-api
   replicas: 10
   strategy:
     rollingUpdate:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: node-dummy
+        app: demo-api
     spec:
       # initContainers:
       # Init containers are exactly like regular containers, except:
@@ -27,8 +27,8 @@ spec:
       imagePullSecrets:
         - name: ghcr-secret
       containers:
-        - name: node-dummy
-          image: ghcr.io/champalab/node-dummy:5c82b087dcc17efd0068640b2c44d6cf1423b6b8
+        - name: demo-api
+          image: ghcr.io/champalab/demo-api:5c82b087dcc17efd0068640b2c44d6cf1423b6b8
           imagePullPolicy: Always
           resources:
             requests:
@@ -39,7 +39,7 @@ spec:
               memory: 2048Mi
           livenessProbe:
             tcpSocket:
-              port: 4500
+              port: 1122
             initialDelaySeconds: 5
             timeoutSeconds: 5
             successThreshold: 1
@@ -47,7 +47,7 @@ spec:
             periodSeconds: 10
           readinessProbe:
             tcpSocket:
-              port: 4500
+              port: 1122
             initialDelaySeconds: 5
             timeoutSeconds: 2
             successThreshold: 1
@@ -57,20 +57,20 @@ spec:
           #   - name: DB_HOST
           #     valueFrom:
           #       configMapKeyRef:
-          #         name: node-dummy
+          #         name: demo-api
           #         key: DB_HOST
           # envFrom:
           #   - configMapRef:
-          #       name: node-dummy-config
+          #       name: demo-api-config
           ports:
-            - containerPort: 4500
-              name: node-dummy
+            - containerPort: 1122
+              name: demo-api
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
             - name: vol-dummy
               mountPath: /app/uploads
-              subPath: node-dummy/uploads
+              subPath: demo-api/uploads
       # hostAliases:
       #   - ip: 10.2.100.197
       #     hostnames:
@@ -80,9 +80,8 @@ spec:
           hostPath:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: vol-dummy
-        # _type: nfs
-          nfs:
-            # path: /srv/nfs/share
-            # server: 195.35.23.213
+          # nfs:
+          #   path: /srv/nfs/share
+          #   server: IP
 
       restartPolicy: Always
