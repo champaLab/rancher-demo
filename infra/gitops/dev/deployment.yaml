@@ -28,7 +28,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: node-dummy
-          image: ghcr.io/champalab/node-dummy:d5219fde5075cee65b2cca5d586e2e67642a6ad3
+          image: ghcr.io/champalab/node-dummy:5c82b087dcc17efd0068640b2c44d6cf1423b6b8
           imagePullPolicy: Always
           resources:
             requests:
