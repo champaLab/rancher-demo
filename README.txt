@@ -10,6 +10,7 @@
 
 3. Install kubectl
     sudo snap install kubectl --classic
+    kubectl get svc
 
 4. copy rancher config to ~/.kube/config
 
