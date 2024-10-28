@@ -28,7 +28,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: demo-api
-          image: ghcr.io/champalab/demo-api:9822b8034ef47e81f1da53eb8e5388639929fe67
+          image: ghcr.io/champalab/demo-api:fcc00fb73cb29cb735b0e9df974be095d7632dc1
           imagePullPolicy: Always
           resources:
             requests:
