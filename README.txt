@@ -6,6 +6,7 @@
     sudo apt install docker-compose
     sudo usermod -aG docker $USER
     newgrp docker
+    git clone https://github.com/champaLab/demo-api.git
 
 3. Install kubectl
     sudo snap install kubectl --classic
