@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: node-dummy-config
+  name: demo-api-config
   namespace: dev
 data:
   NODE_ENV: "development"

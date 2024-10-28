@@ -1,18 +1,14 @@
-1. Install docker
-    ```
-        curl https://releases.rancher.com/install-docker/20.10.sh | sudo sh
-    ```
-- https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
+## 1. Install docker
+    curl https://releases.rancher.com/install-docker/20.10.sh | sudo sh
+    https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
 
 2. Install docker-compose
-    ```
     sudo apt install docker-compose
-    ```
     sudo usermod -aG docker $USER
     newgrp docker
 
 3. Install kubectl
-- sudo snap install kubectl --classic
+    sudo snap install kubectl --classic
 
 4. copy rancher config to ~/.kube/config
 

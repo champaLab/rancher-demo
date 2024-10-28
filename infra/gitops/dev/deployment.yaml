@@ -53,15 +53,10 @@ spec:
             successThreshold: 1
             failureThreshold: 3
             periodSeconds: 10
-          # env:
-          #   - name: DB_HOST
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: demo-api
-          #         key: DB_HOST
-          # envFrom:
-          #   - configMapRef:
-          #       name: demo-api-config
+          
+          envFrom:
+            - configMapRef:
+                name: demo-api-config
           ports:
             - containerPort: 1122
               name: demo-api
