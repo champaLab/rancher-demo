@@ -3,7 +3,7 @@
     https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
 
 2. Install docker-compose
-    sudo apt install docker-compose
+    sudo apt install -y docker-compose
     sudo usermod -aG docker $USER
     newgrp docker
     git clone https://github.com/champaLab/demo-api.git
