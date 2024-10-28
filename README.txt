@@ -6,7 +6,7 @@
     sudo apt install -y docker-compose
     sudo usermod -aG docker $USER
     newgrp docker
-    git clone https://github.com/champaLab/demo-api.git
+    git clone https://github.com/champaLab/rancher-demo.git
 
 3. Install kubectl
     sudo snap install kubectl --classic
