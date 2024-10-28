@@ -41,10 +41,8 @@
     4. check output dir from tsconfig.json  & ecosystem.config.js
     5. check kubernetes port use telnet == IP nodePort (form file -- infra/gitops/dev/deployment.yaml )
         5.1 new  Secrets and variables 
-            -> Name *
-                WORKFLOW_TOKEN 
-            -> Value * 
-                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s
+            -> Name : WORKFLOW_TOKEN 
+            -> Example value :  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s
  
         5.2 Push project to github & check github action 
 
