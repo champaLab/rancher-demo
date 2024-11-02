@@ -63,9 +63,9 @@ spec:
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
-            - name: demo-api
+            - name: demo
               mountPath: /app/uploads
-              subPath: demo-api/uploads
+              subPath: demo/uploads
       # hostAliases:
       #   - ip: 10.2.100.197
       #     hostnames:
@@ -74,9 +74,9 @@ spec:
         - name: localtime
           hostPath:
             path: /usr/share/zoneinfo/Asia/Bangkok
-        - name: demo-api
+        - name: demo
           nfs:
-            path: /mnt/nfs/share #/srv/nfs/share
+            path: /mnt/nfs/share
             # path: /srv/nfs/share
             server: 195.35.23.213
 
