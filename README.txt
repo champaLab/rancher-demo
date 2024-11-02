@@ -82,6 +82,7 @@
                 -> Cluster URL (select)
                 -> Namespace = dev
 
+
 server {
     server_name domain.com www.domain.com;
 
@@ -105,3 +106,28 @@ vim /etc/nginx/sites-available/domain.com
 sudo ln -s /etc/nginx/sites-available/domain.com /etc/nginx/sites-enabled/
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx
+
+
+
+============> Set Up NFS Server
+1. Install NFS Server:
+    sudo apt install nfs-kernel-server -y
+    sudo mkdir -p /mnt/share
+    sudo chown -R nobody:nogroup /mnt/share
+    sudo chmod 755 /mnt/nfs_share
+    echo "/mnt/share <IP-Client/24>(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+    sudo exportfs -a 
+    sudo systemctl start nfs-kernel-server
+    sudo systemctl enable nfs-kernel-server
+
+2. Set Up NFS Client
+    sudo apt update
+    sudo apt install nfs-common -y 
+    sudo mkdir -p /mnt/client_share
+    sudo mount <server_ip>:/mnt/share /mnt/client_share
+    df -h | grep nfs_share
+
+
+Automate the Mount: To mount automatically at boot, add the following to /etc/fstab:
+nfs_server_ip:/mnt/share /mnt/client_share nfs defaults 0 0
+
