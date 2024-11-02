@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: demo-api
-  replicas: 1
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -53,7 +53,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
             periodSeconds: 10
-          
+
           envFrom:
             - configMapRef:
                 name: demo-api-config
