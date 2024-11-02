@@ -76,7 +76,7 @@ spec:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo-api
           nfs:
-            path: /mnt/nfs/share #/srv/nfs/share
+            path: /srv/nfs/share #/mnt/nfs/share #/srv/nfs/share
             server: 195.35.23.213
 
       restartPolicy: Always
