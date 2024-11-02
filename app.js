@@ -10,7 +10,7 @@ app.use(morgan("combined"));
 
 // Configure storage for uploaded files
 const storage = multer.diskStorage({
-  destination: resolve(`${process.env.PWD}/uploads/`),
+  destination: path.resolve(`${process.env.PWD}/uploads/`),
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + path.extname(file.originalname)); // Unique filename with original extension
   },
