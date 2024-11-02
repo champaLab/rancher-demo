@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: demo-api
-  replicas: 2
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -28,7 +28,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: demo-api
-          image: ghcr.io/champalab/demo-api:5af60ebcc1de834466f13f36f291b30371cd9358
+          image: ghcr.io/champalab/demo-api:d48aa28642232138e12657198943533139a35df1
           imagePullPolicy: Always
           resources:
             requests:
