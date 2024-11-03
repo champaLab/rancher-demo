@@ -51,6 +51,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
   }
 });
 
-app.listen(1122, "0.0.0.0", () => {
-  console.log("Server is running on port 1122");
+app.listen(3377, "0.0.0.0", () => {
+  console.log("Server is running on port 3377");
 });

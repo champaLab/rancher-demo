@@ -39,7 +39,7 @@ spec:
               memory: 2048Mi
           livenessProbe:
             tcpSocket:
-              port: 1122
+              port: 3377
             initialDelaySeconds: 5
             timeoutSeconds: 5
             successThreshold: 1
@@ -47,7 +47,7 @@ spec:
             periodSeconds: 10
           readinessProbe:
             tcpSocket:
-              port: 1122
+              port: 3377
             initialDelaySeconds: 5
             timeoutSeconds: 2
             successThreshold: 1
@@ -60,7 +60,7 @@ spec:
             # - secretRef:
             #     name: demo-api-secret
           ports:
-            - containerPort: 1122
+            - containerPort: 3377
               name: http
           volumeMounts:
             - name: localtime
