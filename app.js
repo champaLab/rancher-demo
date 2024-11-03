@@ -31,7 +31,7 @@ if (!fs.existsSync(uploadDir)) {
 app.get("/", (req, res) => {
   res.json({
     message: "Hello World",
-    key: process.env.KEY,
+    key: process.env.KEY || "default_value",
   });
 });
 
