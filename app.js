@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(morgan("combined"));
 
-app.use(express.static("uploads"));
+app.use("/", express.static("uploads"));
 
 // Configure storage for uploaded files
 const storage = multer.diskStorage({

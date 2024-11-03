@@ -67,7 +67,7 @@ spec:
               mountPath: /etc/localtime
             - name: demo
               mountPath: /app/uploads
-              subPath: demo/uploads
+              subPath: demo-api/uploads
       # hostAliases:
       #   - ip: 10.2.100.197
       #     hostnames:
@@ -78,7 +78,9 @@ spec:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo
           nfs:
+            # path: /mnt/nfs/share
+            # server: 195.35.23.213
             path: /mnt/nfs/share
-            server: 195.35.23.213
+            server: 34.87.14.195
 
       restartPolicy: Always
