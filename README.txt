@@ -118,6 +118,7 @@ sudo certbot --nginx
     echo "/mnt/share <IP-Client/24>(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
     sudo exportfs -a 
     sudo systemctl start nfs-kernel-server
+    sudo systemctl restart nfs-kernel-server
     sudo systemctl enable nfs-kernel-server
 
 2. Set Up NFS Client
