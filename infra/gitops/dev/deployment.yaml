@@ -59,6 +59,7 @@ spec:
                 name: demo-api-config
             - secretRef:
                 name: demo-api-secret
+                
           ports:
             - containerPort: 3377
               name: http
