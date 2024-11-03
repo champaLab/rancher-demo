@@ -120,6 +120,7 @@ sudo certbot --nginx
     sudo systemctl start nfs-kernel-server
     sudo systemctl enable nfs-kernel-server
     sudo systemctl restart nfs-kernel-server
+    sudo systemctl status nfs-kernel-server
 
 
 2. Set Up NFS Client
