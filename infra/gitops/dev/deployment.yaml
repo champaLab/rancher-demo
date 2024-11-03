@@ -78,7 +78,6 @@ spec:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo
           nfs:
-            # path: /srv/nfs/share
             path: /mnt/nfs/share
             server: 195.35.23.213
 
