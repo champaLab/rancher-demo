@@ -82,6 +82,5 @@ spec:
             # path: /mnt/nfs/share
             # server: 195.35.23.213
             path: /mnt/share
-            server: 34.142.253.253
-
+            server: 34.87.14.195
       restartPolicy: Always
