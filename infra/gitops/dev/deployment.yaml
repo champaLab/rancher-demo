@@ -61,7 +61,7 @@ spec:
                 name: demo-api-secret
           ports:
             - containerPort: 1122
-              name: demo-api
+              name: http
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
