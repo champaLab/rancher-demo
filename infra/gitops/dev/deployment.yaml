@@ -67,7 +67,7 @@ spec:
               mountPath: /etc/localtime
             - name: demo
               mountPath: /app/uploads
-              subPath: demo-api/uploads
+              subPath: demo/uploads
       # hostAliases:
       #   - ip: 10.2.100.197
       #     hostnames:
