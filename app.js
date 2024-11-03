@@ -29,7 +29,10 @@ if (!fs.existsSync(uploadDir)) {
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.json({
+    message: "Hello World",
+    key: process.env.KEY,
+  });
 });
 
 app.get("/v1", (req, res) => {
