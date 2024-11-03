@@ -114,7 +114,7 @@ sudo certbot --nginx
     sudo apt install nfs-kernel-server -y
     sudo mkdir -p /mnt/share
     sudo chown -R nobody:nogroup /mnt/share
-    sudo chmod 755 /mnt/nfs_share
+    sudo chmod 755 /mnt/share
     echo "/mnt/share <IP-Client/24>(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
     sudo exportfs -a 
     sudo systemctl start nfs-kernel-server
@@ -125,7 +125,7 @@ sudo certbot --nginx
     sudo apt install nfs-common -y 
     sudo mkdir -p /mnt/client_share
     sudo mount <server_ip>:/mnt/share /mnt/client_share
-    df -h | grep nfs_share
+    df -h | grep share
 
 
 Automate the Mount: To mount automatically at boot, add the following to /etc/fstab:
