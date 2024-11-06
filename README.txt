@@ -8,7 +8,7 @@
     git clone https://github.com/champaLab/rancher-demo.git
     sudo apt install -y docker-compose 
 
- docker exec -it rancher-demo /bin/sh 
+ 
 3. Install kubectl
     sudo snap install kubectl --classic
     kubectl get svc
@@ -18,6 +18,7 @@
 4. copy rancher config to ~/.kube/config
 
 5. install  argocd
+    docker exec -it rancher-demo /bin/sh 
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
