@@ -3,14 +3,17 @@
     https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
 
 2. Install docker-compose
-    sudo apt install -y docker-compose 
     sudo usermod -aG docker $USER 
     newgrp docker 
     git clone https://github.com/champaLab/rancher-demo.git
+    sudo apt install -y docker-compose 
 
+ docker exec -it rancher-demo /bin/sh 
 3. Install kubectl
     sudo snap install kubectl --classic
     kubectl get svc
+
+   
 
 4. copy rancher config to ~/.kube/config
 
@@ -18,6 +21,11 @@
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+ # get password 
+    kubectl config set-context --current --namespace=argocd
+    kubectl get svc
+    kubectl get secret -n argocd 
+    kubectl get secret -n argocd argocd-initial-admin-secret -o yaml
 
 6 start argocd 
     kubectl port-forward svc/argocd-server -n argocd 1234:443
