@@ -136,6 +136,8 @@ services:
     labels:
       - "traefik.enable=true"
     networks:
+      - rancher-network
+    networks:
       rancher-net:
         driver: bridge
 
