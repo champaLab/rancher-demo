@@ -12,9 +12,36 @@
 #       - 8443:443
 #       - 8080:80
 
+# version: "3"
+# services:
+#   ranchers:
+#     image: rancher/rancher:v2.9.2
+#     container_name: rancher-demo
+#     privileged: true
+#     volumes:
+#       - /opt/rancher:/var/lib/rancher
+#       - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
+#     restart: always
+#     ports:
+#       - 8443:443
+#       - 8080:80
+
+#   cert-manager:
+#     image: alpine/helm:3.9.0  # Use a Helm image to execute the command
+#     container_name: cert-manager
+#     command: >
+#       sh -c "helm repo add jetstack https://charts.jetstack.io &&
+#              helm repo update &&
+#              helm upgrade --install cert-manager jetstack/cert-manager 
+#              --namespace cert-manager 
+#              --create-namespace 
+#              --set installCRDs=true"
+#     restart: "no"  # Run once and exit
+
 version: "3"
+
 services:
-  ranchers:
+  rancher:
     image: rancher/rancher:v2.9.2
     container_name: rancher-demo
     privileged: true
@@ -22,19 +49,42 @@ services:
       - /opt/rancher:/var/lib/rancher
       - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
     restart: always
+    networks:
+      - rancher-network
+    expose:
+      - "80"  # Expose port 80 for reverse proxy (NGINX will forward it to 443)
+
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    environment:
+      - DEFAULT_HOST=rancher-demo
     ports:
-      - 8443:443
-      - 8080:80
+      - "80:80"  # HTTP to be used for Certbot challenge
+      - "443:443"  # HTTPS port
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro  # So it can auto-discover containers
+    depends_on:
+      - rancher
+    networks:
+      - rancher-network
 
-  cert-manager:
-    image: alpine/helm:3.9.0  # Use a Helm image to execute the command
-    container_name: cert-manager
-    command: >
-      sh -c "helm repo add jetstack https://charts.jetstack.io &&
-             helm repo update &&
-             helm upgrade --install cert-manager jetstack/cert-manager 
-             --namespace cert-manager 
-             --create-namespace 
-             --set installCRDs=true"
-    restart: "no"  # Run once and exit
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./certs-data:/var/lib/letsencrypt
+      - ./nginx/certbot-etc:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    environment:
+      - EMAIL=sonephetmnlv@gmail.com
+      - DOMAIN=jussun.com
+    networks:
+      - rancher-network
+    depends_on:
+      - nginx
 
+networks:
+  rancher-network:
+    driver: bridge
