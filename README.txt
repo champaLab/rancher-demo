@@ -5,6 +5,7 @@
     https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
 
 2. Install docker-compose
+    ps -p 1141
     sudo usermod -aG docker $USER 
     newgrp docker 
     git clone https://github.com/champaLab/rancher-demo.git
