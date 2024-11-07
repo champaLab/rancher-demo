@@ -147,3 +147,5 @@ sudo certbot --nginx
 Automate the Mount: To mount automatically at boot, add the following to /etc/fstab:
 nfs_server_ip:/mnt/share /mnt/client_share nfs defaults 0 0
 
+
+# https://gist.github.com/dmancloud/0474dbfedaa7e3793099f68e96cab88f
