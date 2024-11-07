@@ -12,31 +12,31 @@
 #       - 443:443
 #       - 80:80
 
-version: "3"
-services:
-  rancher:
-    image: rancher/rancher:v2.9.2
-    container_name: rancher-demo
-    privileged: true
-    volumes:
-      - /opt/rancher:/var/lib/rancher
-      - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
-    restart: always
-    ports:
-      - 443:443
-      - 80:80
-    environment:
-      - AUDIT_LOG=true
-      - SSL_CERT_PATH=/var/lib/ca-certificates
-      - SSL_KEY_PATH=/var/lib/ca-certificates
-    labels:
-      - "traefik.enable=true"
-    networks:
-      - rancher-net
+# version: "3"
+# services:
+#   rancher:
+#     image: rancher/rancher:v2.9.2
+#     container_name: rancher-demo
+#     privileged: true
+#     volumes:
+#       - /opt/rancher:/var/lib/rancher
+#       - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
+#     restart: always
+#     ports:
+#       - 443:443
+#       - 80:80
+#     environment:
+#       - AUDIT_LOG=true
+#       - SSL_CERT_PATH=/var/lib/ca-certificates
+#       - SSL_KEY_PATH=/var/lib/ca-certificates
+#     labels:
+#       - "traefik.enable=true"
+#     networks:
+#       - rancher-net
 
-networks:
-  rancher-net:
-    external: false
+# networks:
+#   rancher-net:
+#     external: false
 
 
 # # version: "3"
@@ -115,3 +115,26 @@ networks:
 # networks:
 #   rancher-network:
 #     driver: bridge
+
+version: "3"
+services:
+  rancher:
+    image: rancher/rancher:v2.9.2
+    container_name: rancher-demo
+    privileged: true
+    volumes:
+      - /opt/rancher:/var/lib/rancher
+      - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
+    restart: always
+    ports:
+      - 443:443
+      - 80:80
+    environment:
+      - AUDIT_LOG=true
+      - SSL_CERT_PATH=/var/lib/ca-certificates
+      - SSL_KEY_PATH=/var/lib/ca-certificates
+    labels:
+      - "traefik.enable=true"
+    networks:
+      - rancher-net
+
