@@ -1,3 +1,17 @@
+# version: "3"
+# services:
+#   ranchers:
+#     image: rancher/rancher:v2.9.2
+#     container_name: rancher-demo
+#     privileged: true
+#     volumes:
+#       - /opt/rancher:/var/lib/rancher
+#       - ${HOMEDIR}/certs/rancher:/var/lib/ca-certificates
+#     restart: always
+#     ports:
+#       - 8443:443
+#       - 8080:80
+
 version: "3"
 services:
   ranchers:
@@ -11,3 +25,16 @@ services:
     ports:
       - 8443:443
       - 8080:80
+
+  cert-manager:
+    image: alpine/helm:3.9.0  # Use a Helm image to execute the command
+    container_name: cert-manager
+    command: >
+      sh -c "helm repo add jetstack https://charts.jetstack.io &&
+             helm repo update &&
+             helm upgrade --install cert-manager jetstack/cert-manager 
+             --namespace cert-manager 
+             --create-namespace 
+             --set installCRDs=true"
+    restart: "no"  # Run once and exit
+
