@@ -14,9 +14,20 @@ spec:
   tls:
     - hosts:
         - jussun.com
+        - www.jussun.com
       secretName: secret-name-tls
   rules:
     - host: jussun.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-api-service
+                port:
+                  number: 80
+    - host: www.jussun.com
       http:
         paths:
           - path: /
