@@ -23,24 +23,47 @@
 #         - jussun.com
 #       secretName: demo
 
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: kube-certs-ingress
+# spec:
+#   ingressClassName: nginx
+#   tls:
+#     - hosts:
+#         - "jussun.com"
+#       secretName: echo-cert
+#   rules:
+#     - host: "jussun.com"
+#       http:
+#         paths:
+#           - pathType: ImplementationSpecific
+#             path: "/"
+#             backend:
+#               service:
+#                 name: kube-certs
+#                 port:
+#                   number: 80
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
   name: kube-certs-ingress
 spec:
-  ingressClassName: nginx
   tls:
     - hosts:
-        - "jussun.com"
-      secretName: echo-cert
+        - jussun.com
+      secretName: example-app-tls
   rules:
-    - host: "jussun.com"
+    - host: jussun.com
       http:
         paths:
-          - pathType: ImplementationSpecific
-            path: "/"
+          - path: /
+            pathType: Prefix
             backend:
               service:
-                name: kube-certs
+                name: demo-api-service
                 port:
                   number: 80

@@ -4,10 +4,22 @@ metadata:
   name: kubecert
   namespace: demo-api
 spec:
-  secretName: demo
+  secretName: example-app-tls
   issuerRef:
     name: kubeissuer
     kind: ClusterIssuer
   commonName: jussun.com
   dnsNames:
     - jussun.com
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: example-app
+#   namespace: default
+# spec:
+#   dnsNames:
+#     - marcel.guru
+#   secretName: example-app-tls
+#   issuerRef:
+#     name: letsencrypt-cluster-issuer
+#     kind: ClusterIssuer
