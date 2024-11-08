@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: secret-name-tls
   issuerRef:
-    name: kubeissuer
+    name: kube-issuer
     kind: ClusterIssuer
   commonName: jussun.com
   dnsNames:
