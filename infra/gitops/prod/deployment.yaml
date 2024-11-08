@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-api
-  namespace: parking-prod
+  namespace: demo-api
   labels:
     app: demo-api
 spec:
