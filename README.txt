@@ -21,7 +21,7 @@
     chmod +x kubectl
     sudo mv kubectl /usr/local/bin/
 
-    vim kubeconfig ===> add config file
+    vim kubeconfig ===> copy config form rancher
     chmod 400 kubeconfig
     export KUBECONFIG=$(pwd)/kubeconfig
     echo $KUBECONFIG
