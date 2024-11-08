@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: "traefik" # Specify your Ingress class (e.g., traefik or nginx)
+spec:
+  rules:
+    - host: aliexpressshop.online # Replace with your domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - aliexpressshop.online # Replace with your domain
+      secretName: argocd-tls # Optional: Use a TLS secret for HTTPS if you have one
