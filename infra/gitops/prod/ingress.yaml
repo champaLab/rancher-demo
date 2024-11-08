@@ -45,12 +45,40 @@
 #                 port:
 #                   number: 80
 
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: "nginx"
+#   name: kube-certs-ingress
+# spec:
+#   tls:
+#     - hosts:
+#         - jussun.com
+#       secretName: example-app-tls
+#   rules:
+#     - host: jussun.com
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: demo-api-service
+#                 port:
+#                   number: 80
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: kube-certs-ingress
+  namespace: demo-api
   annotations:
     kubernetes.io/ingress.class: "nginx"
-  name: kube-certs-ingress
+    cert-manager.io/cluster-issuer: "kubeissuer"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
 spec:
   tls:
     - hosts:
