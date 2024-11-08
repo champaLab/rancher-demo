@@ -83,7 +83,7 @@ spec:
   tls:
     - hosts:
         - jussun.com
-      secretName: example-app-tls
+      secretName: demo-api-tls
   rules:
     - host: jussun.com
       http:

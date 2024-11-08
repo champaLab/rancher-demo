@@ -4,7 +4,7 @@ metadata:
   name: kubecert
   namespace: demo-api
 spec:
-  secretName: example-app-tls
+  secretName: demo-api-tls
   issuerRef:
     name: kubeissuer
     kind: ClusterIssuer
