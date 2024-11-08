@@ -16,6 +16,12 @@
     sudo snap install kubectl --classic
     kubectl get svc
 
+    EXPORT config
+    vim kubeconfig ===> add config file
+    chmod 400 kubeconfig
+    EXPORT KUBCONFIG=$(pwd)/kubeconfig
+
+
    
 
 4. copy rancher config to ~/.kube/config
