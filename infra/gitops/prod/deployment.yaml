@@ -57,8 +57,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: demo-api-config
-            - secretRef:
-                name: demo-api-secret
+            # - secretRef:
+            #     name: demo-api-secret
 
           ports:
             - containerPort: 3377
@@ -66,9 +66,9 @@ spec:
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
-            - name: demo
-              mountPath: /app/uploads
-              subPath: demo/uploads
+            # - name: demo
+            #   mountPath: /app/uploads
+            #   subPath: demo/uploads
       # hostAliases:
       #   - ip: 10.2.100.197
       #     hostnames:
@@ -78,9 +78,9 @@ spec:
           hostPath:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo
-          nfs:
-            # path: /mnt/nfs/share
-            # server: 195.35.23.213
-            path: /mnt/share
-            server: 34.87.14.195
+          # nfs:
+          # path: /mnt/nfs/share
+          # server: 195.35.23.213
+          # path: /mnt/share
+          # server: 34.87.14.195
       restartPolicy: Always
