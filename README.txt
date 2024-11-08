@@ -6,6 +6,7 @@
 
 2. Install docker-compose
     ps -p 1141
+    sudo kill -9 1616
     sudo usermod -aG docker $USER 
     newgrp docker 
     git clone https://github.com/champaLab/rancher-demo.git
