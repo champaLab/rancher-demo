@@ -8,6 +8,6 @@ spec:
   issuerRef:
     name: kubeissuer
     kind: ClusterIssuer
-  commonName: demo.a29874f5-4ef6-4c0e-bcf4-8aa80083fb4f.lb.civo.com
+  commonName: jussun.com
   dnsNames:
-    - demo.a29874f5-4ef6-4c0e-bcf4-8aa80083fb4f.lb.civo.com
+    - jussun.com
