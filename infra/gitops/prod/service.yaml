@@ -1,37 +1,36 @@
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: demo-api-service
-#   namespace: demo-api
-# spec:
-#   selector:
-#     app: demo-api
-#   type: NodePort
-#   sessionAffinity: None
-#   # sessionAffinityConfig:
-#   #   clientIP:
-#   #     timeoutSeconds: 10800
-#   externalTrafficPolicy: Cluster
-#   internalTrafficPolicy: Cluster
-#   ports:
-#     - name: demo-api-port-port
-#       protocol: TCP
-#       port: 3377
-#       targetPort: 3377
-#       # If you set the `spec.type` field to `NodePort` and you want a specific port number,
-#       # you can specify a value in the `spec.ports[*].nodePort` field.
-#       nodePort: 30200
-
 apiVersion: v1
 kind: Service
 metadata:
   name: demo-api-service
+  namespace: demo-api
 spec:
   selector:
     app: demo-api
+  type: NodePort
+  sessionAffinity: None
+  # sessionAffinityConfig:
+  #   clientIP:
+  #     timeoutSeconds: 10800
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
   ports:
-    - name: http
+    - name: demo-api-port-port
       protocol: TCP
       port: 3377
-      targetPort: 5678
-  type: ClusterIP
+      targetPort: 3377
+      # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+      # you can specify a value in the `spec.ports[*].nodePort` field.
+      nodePort: 30200
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: demo-api-service
+# spec:
+#   selector:
+#     app: demo-api
+#   ports:
+#     - name: http
+#       protocol: TCP
+#       port: 3377
+#       targetPort: 5678
+#   type: ClusterIP
