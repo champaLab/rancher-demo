@@ -1,72 +1,3 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     cert-manager.io/cluster-issuer: kubeissuer
-#     kubernetes.io/ingress.class: nginx
-#   name: kube-certs-ingress
-#   namespace: demo-api
-# spec:
-#   rules:
-#     - host: jussun.com
-#       http:
-#         paths:
-#           - backend:
-#               service:
-#                 name: kube-certs
-#                 port:
-#                   number: 3377
-#             path: /
-#             pathType: Prefix
-#   tls:
-#     - hosts:
-#         - jussun.com
-#       secretName: demo
-
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: kube-certs-ingress
-# spec:
-#   ingressClassName: nginx
-#   tls:
-#     - hosts:
-#         - "jussun.com"
-#       secretName: echo-cert
-#   rules:
-#     - host: "jussun.com"
-#       http:
-#         paths:
-#           - pathType: ImplementationSpecific
-#             path: "/"
-#             backend:
-#               service:
-#                 name: kube-certs
-#                 port:
-#                   number: 80
-
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     kubernetes.io/ingress.class: "nginx"
-#   name: kube-certs-ingress
-# spec:
-#   tls:
-#     - hosts:
-#         - jussun.com
-#       secretName: example-app-tls
-#   rules:
-#     - host: jussun.com
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: demo-api-service
-#                 port:
-#                   number: 80
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -83,7 +14,7 @@ spec:
   tls:
     - hosts:
         - jussun.com
-      secretName: demo-api-tls
+      secretName: secret-name-tls
   rules:
     - host: jussun.com
       http:
