@@ -23,7 +23,7 @@
 
     sudo vim kubeconfig ===> copy config form rancher
     sudo chmod 400 kubeconfig
-    sudo export KUBECONFIG=$(pwd)/kubeconfig
+    export KUBECONFIG=$(pwd)/kubeconfig
     echo $KUBECONFIG
     sudo snap install kubectl --classic
 
