@@ -19,7 +19,7 @@
     EXPORT config
     vim kubeconfig ===> add config file
     chmod 400 kubeconfig
-    EXPORT KUBCONFIG=$(pwd)/kubeconfig
+    export KUBCONFIG=$(pwd)/kubeconfig
 
 
    
