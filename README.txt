@@ -26,6 +26,7 @@
     export KUBECONFIG=$(pwd)/kubeconfig
     echo $KUBECONFIG
     sudo snap install kubectl --classic
+    kubectl get nodes
 
 
    
