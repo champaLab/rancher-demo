@@ -24,7 +24,10 @@ spec:
   issuerRef:
     name: kube-issuer
     kind: ClusterIssuer
-  commonName: { { .Values.certificate.commonName } }
+  commonName: jussun.com
+  # commonName: { { .Values.certificate.commonName } }
   dnsNames:
-    - { { .Values.certificate.dnsNames1 } }
-    - { { .Values.certificate.dnsNames2 } }
+    # - { { .Values.certificate.dnsNames1 } }
+    # - { { .Values.certificate.dnsNames2 } }
+    - jussun.com
+    - www.jussun.com
