@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: demo-api
-  replicas: { { .Values.replicas | default 3 } }
+  replicas: {{ .Values.replicas | default 3 }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
