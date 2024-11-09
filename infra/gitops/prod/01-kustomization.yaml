@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: demo-api
+resources:
+  - certificate.yaml # Certificate configuration for SSL
+  - deployment.yaml # Deployment settings
+  - service.yaml # Service configuration for exposing the app
+  - ingress.yaml # Ingress for domain routing
+  - issuer.yaml # Cluster-wide issuer for cert-manager
+
+# Set up environment-based ConfigMap
+configMapGenerator:
+  - name: variables
+    literals: |
+      CERT_COMMON_NAME=jussun.com
+      CERT_DNS_NAME_1=jussun.com
+      CERT_DNS_NAME_2=www.jussun.com
+      REPLICA_COUNT=j
+      NODE_ENV=jj
+      DOMAIN_NAME=jj

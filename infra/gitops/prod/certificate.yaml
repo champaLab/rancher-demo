@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kubecert
+  name: kube-certificate
   namespace: demo-api
 spec:
   secretName: secret-name-tls
   issuerRef:
     name: kube-issuer
     kind: ClusterIssuer
-  commonName: jussun.com
+  commonName: $(CERT_COMMON_NAME)
   dnsNames:
-    - jussun.com
-    - www.jussun.com
+    - $(CERT_DNS_NAME_1)
+    - $(CERT_DNS_NAME_2)
