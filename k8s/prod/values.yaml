@@ -3,3 +3,4 @@ certificate:
   commonName: jussun.com
   dnsNames1: jussun.com
   dnsNames2: www.jussun.com
+  replicas: 2
