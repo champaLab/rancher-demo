@@ -65,7 +65,3 @@ spec:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo
       restartPolicy: Always
-
----
-# values.yaml
-replicas: 2
