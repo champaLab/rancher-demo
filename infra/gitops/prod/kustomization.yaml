@@ -32,22 +32,10 @@
 #       - CERT_DNS_NAME_3=www.jussun.com
 
 # base/kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-resources:
-  - certificate.yaml
-
-vars:
-  - name: DOMAIN_NAME
-    objref:
-      kind: ConfigMap
-      name: domain-config
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.domain
-
-configMapGenerator:
-  - name: domain-config
-    literals:
-      - domain=jussun.com
+apiVersion: v1
+data:
+  application.properties: |
+    FOO=Bar
+kind: ConfigMap
+metadata:
+  name: kustomization-configmap
