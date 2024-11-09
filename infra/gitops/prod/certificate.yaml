@@ -8,7 +8,7 @@ spec:
   issuerRef:
     name: kube-issuer
     kind: ClusterIssuer
-  commonName: $(CERT_COMMON_NAME)
+  commonName: jussun.com
   dnsNames:
-    - $(CERT_DNS_NAME_1)
-    - $(CERT_DNS_NAME_2)
+    - jussun.com
+    - www.jussun.com
