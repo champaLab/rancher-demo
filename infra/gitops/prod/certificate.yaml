@@ -12,4 +12,3 @@ spec:
   dnsNames:
     - jussun.com
     - www.jussun.com
-    # - $(CERT_DNS_NAME_2)
