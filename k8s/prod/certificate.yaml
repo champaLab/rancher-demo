@@ -1,24 +1,8 @@
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: kube-certificate
-#   namespace: demo-api
-# spec:
-#   secretName: secret-name-tls
-#   issuerRef:
-#     name: kube-issuer
-#     kind: ClusterIssuer
-#   commonName: jussun.com
-#   dnsNames:
-#     - jussun.com
-#     - www.jussun.com
-
-# templates/certificate.yaml
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kubecert
-  namespace: kube-certificate
+  name: kube-certificate
+  namespace: demo-api
 spec:
   secretName: secret-name-tls
   issuerRef:
@@ -26,7 +10,13 @@ spec:
     kind: ClusterIssuer
   commonName: jussun.com
   # commonName: { { .Values.certificate.commonName } }
+
   dnsNames:
+    - jussun.com
+    - www.jussun.com
+
+    # commonName: { { .Values.certificate.commonName } }
+    # dnsNames:
     # - { { .Values.certificate.dnsNames1 } }
     # - { { .Values.certificate.dnsNames2 } }
     - jussun.com
