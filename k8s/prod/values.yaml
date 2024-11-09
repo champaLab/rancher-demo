@@ -1,6 +1,5 @@
 # values.yaml
 certificate:
   commonName: jussun.com
-  dnsNames:
-    - jussun.com
-    - www.jussun.com
+  dnsNames1: jussun.com
+  dnsNames2: www.jussun.com
