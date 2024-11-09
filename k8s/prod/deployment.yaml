@@ -1,3 +1,4 @@
+# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: demo-api
-  replicas: 3
+  replicas: { { .Values.replicas } } # This will use the value from values.yaml
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,15 +21,11 @@ spec:
       labels:
         app: demo-api
     spec:
-      # initContainers:
-      # Init containers are exactly like regular containers, except:
-      # - Init containers always run to completion.
-      # - Each init container must complete successfully before the next one starts.
       imagePullSecrets:
         - name: ghcr-secret
       containers:
         - name: demo-api
-          image: ghcr.io/champalab/demo-api:376ebb138b0b032b2dffefa21995f9059c0271c9
+          image: ghcr.io/champalab/demo-api:a89b30a8c38016dd55edb92a19bacf67874f560d
           imagePullPolicy: Always
           resources:
             requests:
@@ -53,34 +50,22 @@ spec:
             successThreshold: 1
             failureThreshold: 3
             periodSeconds: 10
-
           envFrom:
             - configMapRef:
                 name: demo-api-config
-            # - secretRef:
-            #     name: demo-api-secret
-
           ports:
             - containerPort: 3377
               name: http
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
-            # - name: demo
-            #   mountPath: /app/uploads
-            #   subPath: demo/uploads
-      # hostAliases:
-      #   - ip: 10.2.100.197
-      #     hostnames:
-      #       - mxf.laoevisa.gov.la
       volumes:
         - name: localtime
           hostPath:
             path: /usr/share/zoneinfo/Asia/Bangkok
         - name: demo
-          # nfs:
-          # path: /mnt/nfs/share
-          # server: 195.35.23.213
-          # path: /mnt/share
-          # server: 34.87.14.195
       restartPolicy: Always
+
+---
+# values.yaml
+replicas: 2
