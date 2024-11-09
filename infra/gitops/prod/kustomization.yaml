@@ -29,3 +29,4 @@ configMapGenerator:
       - CERT_COMMON_NAME=jussun.com
       - CERT_DNS_NAME_1=jussun.com
       - CERT_DNS_NAME_2=www.jussun.com
+      - CERT_DNS_NAME_3=www.jussun.com
