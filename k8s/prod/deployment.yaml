@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: demo-api
-  replicas: { { .Values.certificate.replicas } }
+  replicas: {{ .Values.certificate.replicas }}
   minReadySeconds: 10
   strategy:
     rollingUpdate:
