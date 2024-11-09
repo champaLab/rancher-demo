@@ -11,4 +11,5 @@ spec:
   commonName: jussun.com
   dnsNames:
     - jussun.com
-    - $(CERT_DNS_NAME_2)
+    - www.jussun.com
+    # - $(CERT_DNS_NAME_2)
