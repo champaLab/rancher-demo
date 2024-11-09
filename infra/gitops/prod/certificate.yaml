@@ -10,5 +10,5 @@ spec:
     kind: ClusterIssuer
   commonName: jussun.com
   dnsNames:
-    - $(CERT_DNS_NAME_1)
+    - $(DOMAIN_NAME)
     - www.jussun.com

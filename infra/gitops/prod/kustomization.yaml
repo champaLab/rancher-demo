@@ -20,13 +20,34 @@
 #       NODE_ENV=jj
 #       DOMAIN_NAME=jj
 
+# resources:
+#   - certificate.yaml
+
+# configMapGenerator:
+#   - name: cert-vars
+#     literals:
+#       - CERT_COMMON_NAME=jussun.com
+#       - CERT_DNS_NAME_1=jussun.com
+#       - CERT_DNS_NAME_2=www.jussun.com
+#       - CERT_DNS_NAME_3=www.jussun.com
+
+# base/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
 resources:
   - certificate.yaml
 
+vars:
+  - name: DOMAIN_NAME
+    objref:
+      kind: ConfigMap
+      name: domain-config
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.domain
+
 configMapGenerator:
-  - name: cert-vars
+  - name: domain-config
     literals:
-      - CERT_COMMON_NAME=jussun.com
-      - CERT_DNS_NAME_1=jussun.com
-      - CERT_DNS_NAME_2=www.jussun.com
-      - CERT_DNS_NAME_3=www.jussun.com
+      - domain=jussun.com
