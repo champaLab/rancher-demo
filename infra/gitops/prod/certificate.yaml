@@ -10,5 +10,5 @@ spec:
     kind: ClusterIssuer
   commonName: jussun.com
   dnsNames:
-    - $(DOMAIN_NAME)
+    - jussun.com
     - www.jussun.com

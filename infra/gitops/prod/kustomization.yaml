@@ -40,10 +40,10 @@
 # metadata:
 #   name: kustomization-configmap
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
 
-configMapGenerator:
-  - name: kustomization-configmap
-    literals:
-      - DOMAIN_NAME=jussun.com
+# configMapGenerator:
+#   - name: kustomization-configmap
+#     literals:
+#       - DOMAIN_NAME=jussun.com
