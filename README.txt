@@ -18,6 +18,10 @@
     git clone https://github.com/champaLab/rancher-demo.git
     sudo apt install -y docker-compose 
 
+    ## delete docker 
+    docker rm -f $(docker ps -a -q)
+    docker ps -a
+
  
 3. Install kubectl
     sudo snap install kubectl --classic
