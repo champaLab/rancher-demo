@@ -2,7 +2,13 @@
     curl -4 icanhazip.com
     dig +short replace_with_subdomain
     curl https://releases.rancher.com/install-docker/20.10.sh | sudo sh
+    // document 
     https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements/install-docker
+ 
+    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    docker-compose --version
+
 
 2. Install docker-compose
     ps -p 1141
