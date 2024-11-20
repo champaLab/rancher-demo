@@ -50,6 +50,9 @@
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 
+    reset password
+    https://github.com/argoproj/argo-cd/blob/master/docs/faq.md#i-forgot-the-admin-password-how-do-i-reset-it
+
  # get password 
     kubectl config set-context --current --namespace=argocd
     kubectl get svc
