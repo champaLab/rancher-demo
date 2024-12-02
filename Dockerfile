@@ -4,7 +4,6 @@ FROM node:20-slim
 WORKDIR /app
 
 RUN apt update
-RUN apt install -y nfs-common
 
 # Install PM2 globally
 RUN npm install -g pm2

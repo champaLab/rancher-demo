@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "node app.js",
+    "serve": "pm2-runtime ./dist/index.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],

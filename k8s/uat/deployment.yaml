@@ -1,0 +1,67 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-api
+  namespace: prod
+  labels:
+    app: demo-api
+spec:
+  selector:
+    matchLabels:
+      app: demo-api
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: demo-api
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: demo-api
+          image: ghcr.io/champalab/demo-api:af2153759008d065d5681c02988b3fd6cc869753
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 500m
+              memory: 100Mi
+            limits:
+              cpu: 2000m
+              memory: 2048Mi
+          livenessProbe:
+            tcpSocket:
+              port: 3377
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 3377
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          envFrom:
+            - configMapRef:
+                name: demo-api-config
+          ports:
+            - containerPort: 3377
+              name: http
+          volumeMounts:
+            - name: localtime
+              mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Bangkok
+        - name: demo
+      restartPolicy: Always
