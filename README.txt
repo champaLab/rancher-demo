@@ -153,6 +153,7 @@ vim /etc/nginx/sites-available/domain.com
 sudo ln -s /etc/nginx/sites-available/domain.com /etc/nginx/sites-enabled/
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx
+sudo systemctl  reload nginx
 
 
 
@@ -183,3 +184,31 @@ nfs_server_ip:/mnt/share /mnt/client_share nfs defaults 0 0
 
 
 # https://gist.github.com/dmancloud/0474dbfedaa7e3793099f68e96cab88f
+
+
+
+# Install mariadb
+sudo apt update
+sudo apt install mariadb-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo systemctl status mariadb
+sudo mysql_secure_installation
+sudo systemctl restart mariadb  
+Admin@9999
+
+mysql -u root -p
+
+For MariaDB:
+sudo vi /etc/mysql/mariadb.conf.d/50-server.cnf
+
+For MySQL:
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+GRANT ALL PRIVILEGES ON database.* TO 'username'@'%' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'Admin@9999';
+FLUSH PRIVILEGES;
+
+
+
